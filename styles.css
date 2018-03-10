@@ -1,0 +1,98 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/*---grid area styling---*/
+.row > button {
+  width: 100px;
+  height: 100px;
+  border-width: 0;
+  border-radius: 8px;
+  margin: 5px !important;
+}
+
+.grid {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.blue {
+  background-color: #7FBAFF;
+}
+
+.blue .lit {
+  background-color: #0076FF;
+}
+
+.red {
+  background-color: #FF7F7F;
+}
+
+.red .lit {
+  background-color: #E83223;
+}
+
+.green {
+  background-color: #7FFFC0;
+}
+
+.green .lit {
+  background-color: #7BF990;
+}
+
+.yellow {
+  background-color: #F8FF7F;
+}
+
+.yellow .lit {
+  background-color: #F6FC55;
+}
+
+.orange {
+  background-color: #FFE37F;
+}
+
+.orange .lit {
+  background-color: #F6C745;
+}
+/*---grid area styling---*/
+
+/*---modal area styling---*/
+.modal-button {
+  display: flex;
+  justify-content: center;
+}
+/*---modal area styling---*/
+
+/*---control area styling---*/
+.control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.control > button {
+  /* width: 100px;
+  height: 25px;
+  border-radius: 12px; */
+  margin: 8px 0;
+}
+/*---control area styling---*/
+
+footer {
+  font-size: 1.5em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 2vh;
+}

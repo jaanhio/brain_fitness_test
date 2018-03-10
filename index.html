@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+    <title>Test Your Memory!</title>
+  </head>
+  <body>
+    <div>
+      <div class="header">
+        <h1 id="title">Test Your Memory!</h1>
+      </div>
+
+      <!--grid area-->
+      <div class="grid">
+        <div class="row">
+          <button id="one" class="blue btn"></button>
+          <button id="two" class="red btn"></button>
+          <button id="three" class="green btn"></button>
+        </div>
+        <div class="row">
+          <button id="four" class="yellow btn"></button>
+          <button id="five" class="orange btn"></button>
+          <button id="six" class="blue btn"></button>
+        </div>
+        <div class="row">
+          <button id="seven" class="red btn"></button>
+          <button id="eight" class="green btn"></button>
+          <button id="nine" class="yellow btn"></button>
+        </div>
+      </div>
+      <!--end of grid area-->
+
+      <!--modal area-->
+      <div>
+        <div class="modal fade" id="instructions" tabindex="-1" role="dialog" aria-labelledby="gameInstructions" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <p>Welcome to my memory game!</p>
+                <p>To begin, click on the "START" button.<br /> Tiles will light up in sequence.</p>
+                <p>Key in the correct sequence to proceed to next level.</p>
+                <p>Have fun!</p>
+                <div class="modal-button">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end of modal area-->
+
+      <!--control buttons area-->
+      <div class="control">
+        <button id="start" class="btn btn-outline-success">START</button>
+        <button id="instruct" type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#instructions">
+          How To Play
+        </button>
+        <button id="reset" class="btn btn-outline-danger invisible">RESET</button>
+      </div>
+      <!--end of control button area-->
+      <footer>
+        <i class="fab fa-github"></i>
+      </footer>
+    </div>
+    <script src="./index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  </body>
+</html>
