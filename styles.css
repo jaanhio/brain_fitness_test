@@ -28,7 +28,7 @@ body {
   background-color: #7FBAFF;
 }
 
-.blue .lit {
+.litblue {
   background-color: #0076FF;
 }
 
@@ -36,32 +36,32 @@ body {
   background-color: #FF7F7F;
 }
 
-.red .lit {
+.litred {
   background-color: #E83223;
 }
 
 .green {
-  background-color: #7FFFC0;
+  background-color: #A6FFAC;
 }
 
-.green .lit {
-  background-color: #7BF990;
+.litgreen {
+  background-color: #00FF12;
 }
 
 .yellow {
-  background-color: #F8FF7F;
+  background-color: #FAFFA5;
 }
 
-.yellow .lit {
-  background-color: #F6FC55;
+.lityellow {
+  background-color: #F2FF00;
 }
 
 .orange {
   background-color: #FFE37F;
 }
 
-.orange .lit {
-  background-color: #F6C745;
+.litorange {
+  background-color: #FFC700;
 }
 /*---grid area styling---*/
 
@@ -86,6 +86,10 @@ body {
   height: 25px;
   border-radius: 12px; */
   margin: 8px 0;
+}
+
+#reset {
+  display: none;
 }
 /*---control area styling---*/
 
