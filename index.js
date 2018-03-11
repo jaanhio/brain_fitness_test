@@ -1,11 +1,14 @@
 $(document).ready(() => {
   
-  const buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   let randomSeq = [];
   let inputSeq = [];
   let level = 1;
   let gameStart = false;
   const lightUpDuration = 500;
+  const baseLightingInterval = 800;
+  const commenceUserInputDelay = 1000;
+  const checkInputDelay = 9000;
+  let checkInputTimer;
 
   const generateSeq = () => {
     randomSeq = [];
@@ -19,11 +22,6 @@ $(document).ready(() => {
 
   const lightUp = () => {
     console.log(level);
-    const baseLightingInterval = 800;
-    // listen for inputs 1s after lighting sequence ended 
-    const commenceUserInputDelay = 1000;
-    const checkInputDelay = 6000;
-    $('button').disabled = true;
     // intervalMultipler used to enable light up sequence to happen asynchronously at increasingly longer intervals
     let intervalMultiplier = 1;
     for (let i = 0; i < randomSeq.length; i++) {
@@ -35,33 +33,34 @@ $(document).ready(() => {
     }
     setTimeout(() => {
       console.log('User can input now');
-    }, baseLightingInterval * intervalMultiplier + commenceUserInputDelay);
-    setTimeout(checkInput, baseLightingInterval * intervalMultiplier + checkInputDelay);
+    }, baseLightingInterval * intervalMultiplier);
+    // checkInput will be called every 200ms after all lighting sequence completed. this is so user inputs can be constantly checked until the required input length is detected. intervals will be cleared once input length matches the length of random lit sequence
+    setTimeout(() => {
+      checkInputTimer = setInterval(checkInput, 200);
+    }, baseLightingInterval * intervalMultiplier);
   }
 
   const checkInput = () => {
-    console.log('listening for inputs');
+    console.log('checking input');
     if (inputSeq.length === randomSeq.length) {
-      if (inputSeq.join('') === randomSeq.join('')) {
-        console.log('Correct input');
-        level++;
-        generateSeq();
-      }
-      else {
-        console.log('Correct length, wrong input');
-        endGame();
-      }
+      console.log('input length equals randomSeq length');
+       if (inputSeq.join('') === randomSeq.join('')) {
+         clearInterval(checkInputTimer); 
+          console.log('Correct input');
+          level++;
+          generateSeq();
+        }
+        else {
+          clearInterval(checkInputTimer);
+          console.log('Correct length, wrong input');
+          endGame();
+        }
     }
     else {
-      console.log('Incorrect length, incorrect input');
-      endGame();
+      console.log('input length shorter than randomSeq length');
     }
   }
   
-  const test = () => {
-    console.log('test');
-  }
-
   const clickOne = () => {
     inputSeq.push(1);
     console.log(inputSeq);
