@@ -2,7 +2,7 @@ $(document).ready(() => {
   
   let randomSeq = [];
   let inputSeq = [];
-  let inputSeqLength, randomSeqLength, remainingTiles;
+  let inputSeqLength, randomSeqLength, remainingTiles, winningMsg;
   let level = 1;
   let gameStart = false;
   let checkInputTimer;
@@ -12,7 +12,61 @@ $(document).ready(() => {
   const checkInputDelay = 9000;
   const resetButton = document.getElementById('reset');
 
-  // $('#subheader').text('');
+
+  // Initialize game
+  const startGame = () => {
+    $('#start').toggle();
+    $('#reset').toggle();
+    generateSeq();
+  }
+
+
+  const endGame = () => {
+    switch (true) {
+      case (level === 1) :
+      winningMsg = `Try harder!`;
+      break;
+      case (level === 2) :
+      winningMsg = `Good try!`;
+      break;
+      case (level === 3) :
+      winningMsg = `Going well!`;
+      break;
+      case (level === 4) :
+      winningMsg = `You are getting better at this!`;
+      break;
+      case (level === 5) :
+      winningMsg = `Keep trying!`;
+      break;
+      case (level === 6) :
+      winningMsg = `Wow amazing!!`;
+      break;
+      case (level === 7) :
+      winningMsg = `Super brain!`;
+      break;
+      case (level > 8) :
+      winningMsg = `Ok you are cheating right...`;
+      break;
+    }
+    $('#endgame-title').text(`You reached level${level}`);
+    $('#endgame-subtitle').text(`${winningMsg}`);
+    $('#subheader').text('Game Over!');
+    resetButton.disabled = false;
+    $('#endGame').modal('toggle');
+  }
+
+
+  const resetGame = () => {
+    $('#start').toggle();
+    $('#reset').toggle();
+    $('#title').text('Test Your Memory!');
+    $('#subheader').text('');
+    inputSeq = [];
+    randomSeq = [];
+    level = 1;
+    winningMsg = '';
+  }
+
 
   const generateSeq = () => {
     $('#subheader').text('');
@@ -40,8 +94,6 @@ $(document).ready(() => {
     }
     setTimeout(() => {
       console.log('User can input now');
-      // $('#title').append('<h5 id="subtitle">Pick your tiles!</h5>');
-      // $('#subheader').text('Pick your tiles!');
     }, baseLightingInterval * intervalMultiplier);
     // checkInput will be called every 200ms after all lighting sequence completed. this is so user inputs can be constantly checked until the required input length is detected. intervals will be cleared once input length matches the length of random lit sequence
     setTimeout(() => {
@@ -54,9 +106,7 @@ $(document).ready(() => {
     remainingTiles = randomSeq.length - inputSeq.length;
     $('#subheader').text(``);
     $('#subheader').text(`${remainingTiles} more tiles!`);
-    // $('#subheader').text('Pick your tiles');
     console.log('checking input');
-    // $('#title').append('<h5 id="subtitle">Input!</h5>');
     if (inputSeq.length === randomSeq.length) {
       console.log('input length equals randomSeq length');
        if (inputSeq.join('') === randomSeq.join('')) {
@@ -158,30 +208,8 @@ $(document).ready(() => {
     }, lightUpDuration);
   }
 
-  const startGame = () => {
-    $('#start').toggle();
-    $('#reset').toggle();
-    generateSeq();
-  }
-
-  const endGame = () => {
-    // $('#subtitle').remove();
-    // $('#title').append('<h5 id="subtitle">Game Over</h5>');
-    $('#subheader').text('Game Over!');
-    resetButton.disabled = false;
-  }
-
-  const resetGame = () => {
-    $('#start').toggle();
-    $('#reset').toggle();
-    $('#title').text('Test Your Memory!');
-    $('#subheader').text('');
-    inputSeq = [];
-    randomSeq = [];
-    level = 1;
-  }
-
   
+  // Click listeners 
   $('#start').on('click', startGame);
   $('#reset').on('click', resetGame);
   $('#1').on('click', clickOne);
@@ -194,5 +222,16 @@ $(document).ready(() => {
   $('#8').on('click', clickEight);  
   $('#9').on('click', clickNine);
 
+
+  // FB sharing implementation
+  document.getElementById('shareBtn').onclick = function () {
+    FB.ui({
+      app_id: '367377887076779',
+      method: 'share',
+      display: 'popup',
+      quote: 'i reached level 1. Come beat my highscore!',
+      href: 'https://jaanhio.github.io/test_your_memory/',
+    }, function (response) { });
+  }
 
 });
