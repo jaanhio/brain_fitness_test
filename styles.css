@@ -5,14 +5,32 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
+  padding-top: 3vh;
+  font-family: 'Amatic SC', cursive;
 }
+
+/*---header area styling---*/
+.header {
+  font-family: 'Amatic SC', cursive;
+  text-align: center;
+}
+
+#subheader {
+  height: 37px;
+  font-size: 1.5rem;
+}
+
+#title {
+  font-size: 3.0rem;
+}
+/*---header area styling---*/
 
 /*---grid area styling---*/
 .row > button {
   width: 100px;
   height: 100px;
-  border-width: 0;
+  border: 1px solid #757575;
   border-radius: 8px;
   margin: 5px !important;
 }
@@ -25,31 +43,31 @@ body {
 }
 
 .blue {
-  background-color: #7FBAFF;
+  background-color: #C2E1FC;
 }
 
 .litblue {
-  background-color: #0076FF;
+  background-color: #2979FF;
 }
 
 .red {
-  background-color: #FF7F7F;
+  background-color: #F3B6BB;
 }
 
 .litred {
-  background-color: #E83223;
+  background-color: #FF1744;
 }
 
 .green {
-  background-color: #A6FFAC;
+  background-color: #CAFCCE;
 }
 
 .litgreen {
-  background-color: #00FF12;
+  background-color: #76FF03;
 }
 
 .yellow {
-  background-color: #FAFFA5;
+  background-color: #FFFEC2;
 }
 
 .lityellow {
@@ -57,11 +75,11 @@ body {
 }
 
 .orange {
-  background-color: #FFE37F;
+  background-color: #FADFBF;
 }
 
 .litorange {
-  background-color: #FFC700;
+  background-color: #FFC400;
 }
 /*---grid area styling---*/
 
@@ -69,6 +87,27 @@ body {
 .modal-button {
   display: flex;
   justify-content: center;
+}
+
+.close {
+  font-size: 4.5rem !important;
+  color: #FF1744 !important;
+}
+
+.modal {
+  font-family: 'Amatic SC',
+  cursive;
+}
+
+#instruct-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+#instruct-body {
+  font-size: 1.5rem;
+  text-align: center;
 }
 /*---modal area styling---*/
 
@@ -82,21 +121,45 @@ body {
 }
 
 .control > button {
-  /* width: 100px;
-  height: 25px;
-  border-radius: 12px; */
   margin: 8px 0;
+  border: 0;
+  color: #ffffff;
+  font-family: 'Amatic SC',
+  cursive;
+  border: 1px solid #757575;
 }
 
 #reset {
   display: none;
+  background-color: #FF1744;
+  font-size: 40px;
+  border-radius: 25px;
+}
+
+#reset:disabled {
+  color: #ffffff;
+  opacity: 0.2;
+}
+
+#start {
+  border-radius: 25px;
+  font-size: 40px;
+  background-color: #B2FF59;
+}
+
+#instruct {
+  border-radius: 30px;
+  font-size: 24px;
+  background-color: #FFD740;
 }
 /*---control area styling---*/
 
 footer {
   font-size: 1.5em;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 2vh;
+  margin-top: 2vh;
+  text-align: center;
+}
+
+a {
+  color: #757575 !important;
 }

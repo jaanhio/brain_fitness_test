@@ -2,15 +2,21 @@ $(document).ready(() => {
   
   let randomSeq = [];
   let inputSeq = [];
+  let inputSeqLength, randomSeqLength, remainingTiles;
   let level = 1;
   let gameStart = false;
-  const lightUpDuration = 500;
-  const baseLightingInterval = 800;
+  let checkInputTimer;
+  const lightUpDuration = 600;
+  const baseLightingInterval = 1150;
   const commenceUserInputDelay = 1000;
   const checkInputDelay = 9000;
-  let checkInputTimer;
+  const resetButton = document.getElementById('reset');
+
+  // $('#subheader').text('');
 
   const generateSeq = () => {
+    $('#subheader').text('');
+    resetButton.disabled = true;
     randomSeq = [];
     for (let i = 0; i < level + 1; i++) {
       let randomNum = Math.floor(Math.random() * 9) + 1;
@@ -20,12 +26,13 @@ $(document).ready(() => {
     lightUp();
   }
 
+
   const lightUp = () => {
     console.log(level);
     // intervalMultipler used to enable light up sequence to happen asynchronously at increasingly longer intervals
     let intervalMultiplier = 1;
     for (let i = 0; i < randomSeq.length; i++) {
-      setTimeout(() => {
+          setTimeout(() => {
         $(`#${randomSeq[i]}`).click();
         inputSeq = [];
       },baseLightingInterval * intervalMultiplier);
@@ -33,6 +40,8 @@ $(document).ready(() => {
     }
     setTimeout(() => {
       console.log('User can input now');
+      // $('#title').append('<h5 id="subtitle">Pick your tiles!</h5>');
+      // $('#subheader').text('Pick your tiles!');
     }, baseLightingInterval * intervalMultiplier);
     // checkInput will be called every 200ms after all lighting sequence completed. this is so user inputs can be constantly checked until the required input length is detected. intervals will be cleared once input length matches the length of random lit sequence
     setTimeout(() => {
@@ -40,8 +49,14 @@ $(document).ready(() => {
     }, baseLightingInterval * intervalMultiplier);
   }
 
+
   const checkInput = () => {
+    remainingTiles = randomSeq.length - inputSeq.length;
+    $('#subheader').text(``);
+    $('#subheader').text(`${remainingTiles} more tiles!`);
+    // $('#subheader').text('Pick your tiles');
     console.log('checking input');
+    // $('#title').append('<h5 id="subtitle">Input!</h5>');
     if (inputSeq.length === randomSeq.length) {
       console.log('input length equals randomSeq length');
        if (inputSeq.join('') === randomSeq.join('')) {
@@ -61,6 +76,7 @@ $(document).ready(() => {
     }
   }
   
+
   const clickOne = () => {
     inputSeq.push(1);
     console.log(inputSeq);
@@ -149,14 +165,17 @@ $(document).ready(() => {
   }
 
   const endGame = () => {
-    $('#title').append('<h5 id="subtitle">Game Over</h5>');
+    // $('#subtitle').remove();
+    // $('#title').append('<h5 id="subtitle">Game Over</h5>');
+    $('#subheader').text('Game Over!');
+    resetButton.disabled = false;
   }
 
   const resetGame = () => {
     $('#start').toggle();
     $('#reset').toggle();
     $('#title').text('Test Your Memory!');
-    $('#subtitle').empty();
+    $('#subheader').text('');
     inputSeq = [];
     randomSeq = [];
     level = 1;

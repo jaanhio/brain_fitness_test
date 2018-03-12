@@ -7,12 +7,16 @@
     <link href="styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
     <title>Test Your Memory!</title>
   </head>
   <body>
     <div>
       <div class="header">
         <h1 id="title">Test Your Memory!</h1>
+        <div>
+          <p id="subheader"></p>
+        </div>
       </div>
 
       <!--grid area-->
@@ -41,10 +45,12 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-body">
-                <p>Welcome to my memory game!</p>
-                <p>To begin, click on the "START" button.<br /> Tiles will light up in sequence.</p>
-                <p>Key in the correct sequence to proceed to next level.</p>
-                <p>Have fun!</p>
+                <p id="instruct-title">Welcome to my memory game!</p>
+                <div id="instruct-body">
+                  <p>To begin, click on the "START" button.<br /> Tiles will light up in sequence.</p>
+                  <p>Select tiles in the correct sequence to proceed to next level.</p>
+                  <p>Have fun!</p>
+                </div>
                 <div class="modal-button">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
