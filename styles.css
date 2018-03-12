@@ -8,6 +8,7 @@ body {
   /* overflow: hidden; */
   padding-top: 3vh;
   font-family: 'Amatic SC', cursive;
+  background-color: mintcream !important;
 }
 
 /*---header area styling---*/
@@ -19,10 +20,12 @@ body {
 #subheader {
   height: 37px;
   font-size: 1.5rem;
+  margin-bottom: 4px;
 }
 
 #title {
   font-size: 3.0rem;
+  margin-bottom: -6px;
 }
 /*---header area styling---*/
 
@@ -99,15 +102,27 @@ body {
   cursive;
 }
 
-#instruct-title {
+#instruct-title, #endgame-title{
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
+  margin-bottom: -4px;
 }
 
-#instruct-body {
+#endgame-subtitle {
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+#instruct-body, #endgame-body {
   font-size: 1.5rem;
   text-align: center;
+}
+
+#shareBtn {
+  text-align: center;
+  font-size: 3rem;
+  color: #2F4482;
 }
 /*---modal area styling---*/
 

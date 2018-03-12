@@ -48,11 +48,21 @@ $(document).ready(() => {
       winningMsg = `Ok you are cheating right...`;
       break;
     }
-    $('#endgame-title').text(`You reached level${level}`);
+    $('#endgame-title').text(`You reached level ${level}!`);
     $('#endgame-subtitle').text(`${winningMsg}`);
     $('#subheader').text('Game Over!');
     resetButton.disabled = false;
     $('#endGame').modal('toggle');
+    // FB sharing implementation
+    document.getElementById('shareBtn').onclick = function () {
+      FB.ui({
+        app_id: '367377887076779',
+        method: 'share',
+        display: 'popup',
+        quote: `I reached level ${level}. Come beat my highscore!`,
+        href: 'https://jaanhio.github.io/test_your_memory/',
+      }, function (response) { });
+    }
   }
 
 
@@ -221,17 +231,5 @@ $(document).ready(() => {
   $('#7').on('click', clickSeven);
   $('#8').on('click', clickEight);  
   $('#9').on('click', clickNine);
-
-
-  // FB sharing implementation
-  document.getElementById('shareBtn').onclick = function () {
-    FB.ui({
-      app_id: '367377887076779',
-      method: 'share',
-      display: 'popup',
-      quote: 'i reached level 1. Come beat my highscore!',
-      href: 'https://jaanhio.github.io/test_your_memory/',
-    }, function (response) { });
-  }
 
 });

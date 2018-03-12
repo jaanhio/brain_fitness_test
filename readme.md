@@ -2,7 +2,7 @@
 
 This is a memory game that requires users to remember the light up sequence and input the correct sequence correctly in order to proceed to next level.
 
-Failure to do so will result in ending of game.
+DEMO: https://jaanhio.github.io/test_your_memory/
 
 Further details on project scope: https://github.com/wdi-sg/wdi-better-underdog/tree/master/project-1
 
