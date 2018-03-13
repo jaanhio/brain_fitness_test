@@ -67,6 +67,7 @@ $(document).ready(() => {
   }
 
 
+  // reset state of game
   const resetGame = () => {
     $('#start').toggle();
     $('#reset').toggle();
@@ -80,6 +81,7 @@ $(document).ready(() => {
   }
 
 
+  // generate randomized lightUp sequence
   const generateSeq = () => {
     $('#subheader').text('');
     resetButton.disabled = true;
@@ -171,10 +173,12 @@ $(document).ready(() => {
     // setHighScore();
   }
 
+
   const setHighScore = () => {
     let highScore = localStorage.getItem('highScore');
     $('#subheader').text(`Highscore: level ${highScore}`);
   }
+
 
   const updateHighScore = () => {
     let currentHighScore = localStorage.getItem('highScore');
@@ -183,6 +187,7 @@ $(document).ready(() => {
     }
   }
 
+  
   // for use to update/get/set highscore on page load/end of game
   const setScoreOnLoadAndEndGame = () => {
     if (storageAvailable('localStorage')) {
