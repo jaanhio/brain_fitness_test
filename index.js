@@ -13,7 +13,7 @@ $(document).ready(() => {
   const resetButton = document.getElementById('reset');
 
 
-  // Initialize game
+  /*---Game logic---*/
   const startGame = () => {
     $('#start').toggle();
     $('#reset').toggle();
@@ -22,6 +22,7 @@ $(document).ready(() => {
 
 
   const endGame = () => {
+    setScoreOnLoadAndEndGame();
     switch (true) {
       case (level === 1) :
       winningMsg = `Try harder!`;
@@ -70,7 +71,8 @@ $(document).ready(() => {
     $('#start').toggle();
     $('#reset').toggle();
     $('#title').text('Test Your Memory!');
-    $('#subheader').text('');
+    // $('#subheader').text('');
+    setHighScore();
     inputSeq = [];
     randomSeq = [];
     level = 1;
@@ -135,8 +137,67 @@ $(document).ready(() => {
       console.log('input length shorter than randomSeq length');
     }
   }
-  
+  /*---Game logic---*/
 
+  /*---Local Storage configuration---*/
+  // Using webstorage localstorage to store high score
+  // checks whether localstorage is available and supported
+  const storageAvailable = (type) => {
+    try {
+      var storage = window[type],
+        x = '__storage_test__';
+      storage.setItem(x, x);
+      storage.removeItem(x);
+      return true;
+    } catch (e) {
+      return e instanceof DOMException && (
+          // everything except Firefox
+          e.code === 22 ||
+          // Firefox
+          e.code === 1014 ||
+          // test name field too, because code might not be present
+          // everything except Firefox
+          e.name === 'QuotaExceededError' ||
+          // Firefox
+          e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+        // acknowledge QuotaExceededError only if there's something already stored
+        storage.length !== 0;
+    }
+  }
+
+
+  const populateStorage = () => {
+    localStorage.setItem('highScore', level);
+    // setHighScore();
+  }
+
+  const setHighScore = () => {
+    let highScore = localStorage.getItem('highScore');
+    $('#subheader').text(`Highscore: level ${highScore}`);
+  }
+
+  const updateHighScore = () => {
+    let currentHighScore = localStorage.getItem('highScore');
+    if (level > currentHighScore) {
+      localStorage.setItem('highScore', level);
+    }
+  }
+
+  // for use to update/get/set highscore on page load/end of game
+  const setScoreOnLoadAndEndGame = () => {
+    if (storageAvailable('localStorage')) {
+      if (!localStorage.getItem('highScore')) {
+        populateStorage();
+      } else {
+        updateHighScore();
+        setHighScore();
+      }
+    }
+  }
+  /*---Local Storage configuration---*/
+
+
+  /*---Tile clicks functions---*/
   const clickOne = () => {
     inputSeq.push(1);
     console.log(inputSeq);
@@ -217,9 +278,9 @@ $(document).ready(() => {
       $('#9').removeClass('lityellow');
     }, lightUpDuration);
   }
-
+  /*---Tile click functions---*/
   
-  // Click listeners 
+  /*---Click listeners---*/
   $('#start').on('click', startGame);
   $('#reset').on('click', resetGame);
   $('#1').on('click', clickOne);
@@ -231,5 +292,9 @@ $(document).ready(() => {
   $('#7').on('click', clickSeven);
   $('#8').on('click', clickEight);  
   $('#9').on('click', clickNine);
+  /*---Click listeners---*/
+
+
+  setScoreOnLoadAndEndGame();
 
 });
