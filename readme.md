@@ -16,11 +16,11 @@ As increasing number of users are moving towards the mobile platform, i have dec
 
 To ensure an enjoyable user experience, layouts and dimensions of components are carefully considered. 
 
-I have decided to go for a clean minimalist approach that to make it clear what users have to do without further explanations.
+I have decided to go for a clean minimalist approach to make it clear what users have to do without further explanations.
 
 Buttons and game components are centered horizontally and placed closer to bottom of screen to allow for comfortable access using one hand.
 
-Colors (pastel colors) and fonts are selected for a more cheerful gaming experience.
+Colors (pastel colors), fonts, shapes, animations are selected for a more cheerful gaming experience.
 
 Further details on my design can be found here: 
 https://projects.invisionapp.com/share/MAG9LNDNW93#/screens/283952611

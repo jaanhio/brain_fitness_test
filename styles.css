@@ -33,9 +33,14 @@ body {
 .row > button {
   width: 100px;
   height: 100px;
-  border: 1px solid #757575;
-  border-radius: 8px;
+  border-color: black;
   margin: 5px !important;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0;
+  animation-delay: 0;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
 }
 
 .grid {
@@ -47,6 +52,9 @@ body {
 
 .blue {
   background-color: #C2E1FC;
+  border-radius: 94% 12% 94% 6%/8% 89% 7% 97% !important;
+  border-width: 2px 3px 2px 3px !important;
+  transform: rotate(4deg);
 }
 
 .litblue {
@@ -55,6 +63,8 @@ body {
 
 .red {
   background-color: #F3B6BB;
+  border-radius: 94% 11% 102% 14%/9% 89% 7% 97% !important;
+  border-width: 2px 3px 1px 2px !important;
 }
 
 .litred {
@@ -63,14 +73,21 @@ body {
 
 .green {
   background-color: #CAFCCE;
+  border-radius: 94% 17% 87% 23%/9% 89% 7% 97% !important;
+  border-width: 1px 3px 3px 3px !important;
+  transform: rotate(4deg);
 }
 
 .litgreen {
   background-color: #76FF03;
+
 }
 
 .yellow {
   background-color: #FFFEC2;
+  border-radius: 94% 17% 87% 23%/9% 94% 22% 89% !important;
+  border-width: 3px 3px 1px 2px !important;
+  transform: rotate(3deg);
 }
 
 .lityellow {
@@ -79,6 +96,9 @@ body {
 
 .orange {
   background-color: #FADFBF;
+  border-radius: 100% 18% 76% 6%/13% 94% 12% 94% !important;
+  border-width: 2px 3px 0.5px 2px !important;
+  transform: rotate(3deg);
 }
 
 .litorange {
@@ -124,6 +144,13 @@ body {
   font-size: 3rem;
   color: #2F4482;
 }
+
+.modal-content {
+  border-radius: 100% 3% 73% 5%/3% 98% 6% 99% !important;
+  border-width: 3px 1px 3px 0.5px !important;
+  border-color: black;
+  transform: rotate(1deg);
+}
 /*---modal area styling---*/
 
 /*---control area styling---*/
@@ -137,18 +164,28 @@ body {
 
 .control > button {
   margin: 8px 0;
-  border: 0;
-  color: #ffffff;
+  /* border: 0; */
+  border-color: #000000;
+  color: #000000;
   font-family: 'Amatic SC',
   cursive;
-  border: 1px solid #757575;
+  /* border: 1px solid #757575; */
+  /* box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.4); */
 }
 
 #reset {
   display: none;
   background-color: #FF1744;
   font-size: 40px;
-  border-radius: 25px;
+  border-width: 2px 5px 3px 5px;
+  border-radius: 88% 15% 94% 5%/13% 89% 13% 97%;
+  transform: rotate(3deg);
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
 
 #reset:disabled {
@@ -157,15 +194,25 @@ body {
 }
 
 #start {
-  border-radius: 25px;
   font-size: 40px;
   background-color: #B2FF59;
+  border-width: 2px 4px 4px 2px;
+  border-radius: 95% 4% 92% 8%/4% 95% 6% 95%;
+  /* transform: rotate(3deg); */
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
 
 #instruct {
-  border-radius: 30px;
   font-size: 24px;
   background-color: #FFD740;
+  border-width: 3px 5px 2px 4px;
+  border-radius: 92% 5% 95% 7%/2% 98% 7% 96%;
+  transform: rotate(-1deg);
 }
 /*---control area styling---*/
 

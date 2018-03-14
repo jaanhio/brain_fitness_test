@@ -2,7 +2,7 @@ $(document).ready(() => {
   
   let randomSeq = [];
   let inputSeq = [];
-  let inputSeqLength, randomSeqLength, remainingTiles, winningMsg;
+  let winningMsg;
   let level = 1;
   let gameStart = false;
   let checkInputTimer;
@@ -16,6 +16,7 @@ $(document).ready(() => {
   /*---Game logic---*/
   const startGame = () => {
     $('#start').toggle();
+    startGameAnimations();
     $('#reset').toggle();
     generateSeq();
   }
@@ -53,6 +54,7 @@ $(document).ready(() => {
     $('#endgame-subtitle').text(`${winningMsg}`);
     $('#subheader').text('Game Over!');
     resetButton.disabled = false;
+    endGameAnimations();
     $('#endGame').modal('toggle');
     // FB sharing implementation
     document.getElementById('shareBtn').onclick = function () {
@@ -78,6 +80,7 @@ $(document).ready(() => {
     randomSeq = [];
     level = 1;
     winningMsg = '';
+    resetGameAnimations();
   }
 
 
@@ -117,9 +120,17 @@ $(document).ready(() => {
 
 
   const checkInput = () => {
-    remainingTiles = randomSeq.length - inputSeq.length;
+    let remainingTiles = randomSeq.length - inputSeq.length;
+    // toggle between plural and singular
+    let tiles = remainingTiles > 1 ? 'tiles' : 'tile';
     $('#subheader').text(``);
-    $('#subheader').text(`${remainingTiles} more tiles!`);
+    if (remainingTiles === 0) {
+      $('#subheader').text(``);
+      $('#subheader').text(`YAY!`);
+    }
+    else {
+      $('#subheader').text(`${remainingTiles} more ${tiles}!`);
+    }
     console.log('checking input');
     if (inputSeq.length === randomSeq.length) {
       console.log('input length equals randomSeq length');
@@ -127,7 +138,8 @@ $(document).ready(() => {
          clearInterval(checkInputTimer); 
           console.log('Correct input');
           level++;
-          generateSeq();
+          // generateSeq();
+          setTimeout(generateSeq, 1500);
         }
         else {
           clearInterval(checkInputTimer);
@@ -206,81 +218,81 @@ $(document).ready(() => {
   const clickOne = () => {
     inputSeq.push(1);
     console.log(inputSeq);
-    $('#1').toggleClass('litblue');
+    $('#1').toggleClass('litblue jello');
     setTimeout(() => {
-      $('#1').removeClass('litblue');
+      $('#1').removeClass('litblue jello');
     }, lightUpDuration);
   }
 
   const clickTwo = () => {
     inputSeq.push(2);
     console.log(inputSeq);
-    $('#2').toggleClass('litred');
+    $('#2').toggleClass('litred jello');
     setTimeout(() => {
-      $('#2').removeClass('litred');
+      $('#2').removeClass('litred jello');
     }, lightUpDuration);
   }
 
   const clickThree = () => {
     inputSeq.push(3);
     console.log(inputSeq);
-    $('#3').toggleClass('litgreen');
+    $('#3').toggleClass('litgreen jello');
     setTimeout(() => {
-      $('#3').removeClass('litgreen');
+      $('#3').removeClass('litgreen jello');
     }, lightUpDuration);
   }
 
   const clickFour = () => {
     inputSeq.push(4);
     console.log(inputSeq);
-    $('#4').toggleClass('lityellow');
+    $('#4').toggleClass('lityellow jello');
     setTimeout(() => {
-      $('#4').removeClass('lityellow');
+      $('#4').removeClass('lityellow jello');
     }, lightUpDuration);
   }
 
   const clickFive = () => {
     inputSeq.push(5);
     console.log(inputSeq);
-    $('#5').toggleClass('litorange');
+    $('#5').toggleClass('litorange jello');
     setTimeout(() => {
-      $('#5').removeClass('litorange');
+      $('#5').removeClass('litorange jello');
     }, lightUpDuration);
   }
 
   const clickSix = () => {
     inputSeq.push(6);
     console.log(inputSeq);
-    $('#6').toggleClass('litblue');
+    $('#6').toggleClass('litblue jello');
     setTimeout(() => {
-      $('#6').removeClass('litblue');
+      $('#6').removeClass('litblue jello');
     }, lightUpDuration);
   }
 
   const clickSeven = () => {
     inputSeq.push(7);
     console.log(inputSeq);
-    $('#7').toggleClass('litred');
+    $('#7').toggleClass('litred jello');
     setTimeout(() => {
-      $('#7').removeClass('litred');
+      $('#7').removeClass('litred jello');
     }, lightUpDuration);
   }
 
   const clickEight = () => {
     inputSeq.push(8);
     console.log(inputSeq);
-    $('#8').toggleClass('litgreen');
+    $('#8').toggleClass('litgreen jello');
     setTimeout(() => {
-      $('#8').removeClass('litgreen');
+      $('#8').removeClass('litgreen jello');
     }, lightUpDuration);
   }
 
   const clickNine = () => {
     inputSeq.push(9);
     console.log(inputSeq);
-    $('#9').toggleClass('lityellow');
+    $('#9').toggleClass('lityellow jello');
     setTimeout(() => {
-      $('#9').removeClass('lityellow');
+      $('#9').removeClass('lityellow jello');
     }, lightUpDuration);
   }
   /*---Tile click functions---*/
@@ -300,6 +312,34 @@ $(document).ready(() => {
   /*---Click listeners---*/
 
 
+  /*---Animations & styles---*/
+  const startGameAnimations = () => {
+    $('#start').removeClass('rubberBand');
+  }
+
+  const endGameAnimations = () => {
+    setTimeout(() => {
+      $('#reset').addClass('rubberBand');
+    }, 1500);
+  }
+
+  const resetGameAnimations = () => {
+    $('#reset').removeClass('rubberBand');
+    setTimeout(() => {
+      $('#start').addClass('rubberBand');
+    }, 5000);
+  }
+
+  // on page load after 5s idle, start rubberband animation on start button
+  const onPageLoadAnimations = () => {
+    // start animating start button after 5s
+    setTimeout(() => {
+      $('#start').addClass('rubberBand');
+    }, 5000);
+  }
+  /*---Animations & styles---*/
+
   setScoreOnLoadAndEndGame();
+  onPageLoadAnimations();
 
 });
