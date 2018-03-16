@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  
+
   let randomSeq = [];
   let inputSeq = [];
   let winningMsg;
@@ -25,30 +25,30 @@ $(document).ready(() => {
   const endGame = () => {
     setScoreOnLoadAndEndGame();
     switch (true) {
-      case (level === 1) :
-      winningMsg = `Try harder!`;
-      break;
-      case (level === 2) :
-      winningMsg = `Good try!`;
-      break;
-      case (level === 3) :
-      winningMsg = `Going well!`;
-      break;
-      case (level === 4) :
-      winningMsg = `You are getting better at this!`;
-      break;
-      case (level === 5) :
-      winningMsg = `Keep trying!`;
-      break;
-      case (level === 6) :
-      winningMsg = `Wow amazing!!`;
-      break;
-      case (level === 7) :
-      winningMsg = `Super brain!`;
-      break;
-      case (level > 8) :
-      winningMsg = `Ok you are cheating right...`;
-      break;
+      case (level === 1):
+        winningMsg = `Try harder!`;
+        break;
+      case (level === 2):
+        winningMsg = `Good try!`;
+        break;
+      case (level === 3):
+        winningMsg = `Going well!`;
+        break;
+      case (level === 4):
+        winningMsg = `You are getting better at this!`;
+        break;
+      case (level === 5):
+        winningMsg = `Keep trying!`;
+        break;
+      case (level === 6):
+        winningMsg = `Wow amazing!!`;
+        break;
+      case (level === 7):
+        winningMsg = `Super brain!`;
+        break;
+      case (level >= 8):
+        winningMsg = `Ok you are cheating right...`;
+        break;
     }
     $('#endgame-title').text(`You reached level ${level}!`);
     $('#endgame-subtitle').text(`${winningMsg}`);
@@ -64,7 +64,7 @@ $(document).ready(() => {
         display: 'popup',
         quote: `I reached level ${level}. Come beat my highscore!`,
         href: 'https://jaanhio.github.io/test_your_memory/',
-      }, function (response) { });
+      }, function (response) {});
     }
   }
 
@@ -74,7 +74,6 @@ $(document).ready(() => {
     $('#start').toggle();
     $('#reset').toggle();
     $('#title').text('Test Your Memory!');
-    // $('#subheader').text('');
     setHighScore();
     inputSeq = [];
     randomSeq = [];
@@ -99,18 +98,18 @@ $(document).ready(() => {
 
 
   const lightUp = () => {
-    console.log(level);
+    // console.log(level);
     // intervalMultipler used to enable light up sequence to happen asynchronously at increasingly longer intervals
     let intervalMultiplier = 1;
     for (let i = 0; i < randomSeq.length; i++) {
-          setTimeout(() => {
+      setTimeout(() => {
         $(`#${randomSeq[i]}`).click();
         inputSeq = [];
-      },baseLightingInterval * intervalMultiplier);
+      }, baseLightingInterval * intervalMultiplier);
       intervalMultiplier++;
     }
     setTimeout(() => {
-      console.log('User can input now');
+      // console.log('User can input now');
     }, baseLightingInterval * intervalMultiplier);
     // checkInput will be called every 200ms after all lighting sequence completed. this is so user inputs can be constantly checked until the required input length is detected. intervals will be cleared once input length matches the length of random lit sequence
     setTimeout(() => {
@@ -127,28 +126,25 @@ $(document).ready(() => {
     if (remainingTiles === 0) {
       $('#subheader').text(``);
       $('#subheader').text(`YAY!`);
-    }
-    else {
+    } else {
       $('#subheader').text(`${remainingTiles} more ${tiles}!`);
     }
-    console.log('checking input');
+    // console.log('checking input');
     if (inputSeq.length === randomSeq.length) {
-      console.log('input length equals randomSeq length');
-       if (inputSeq.join('') === randomSeq.join('')) {
-         clearInterval(checkInputTimer); 
-          console.log('Correct input');
-          level++;
-          // generateSeq();
-          setTimeout(generateSeq, 1500);
-        }
-        else {
-          clearInterval(checkInputTimer);
-          console.log('Correct length, wrong input');
-          endGame();
-        }
-    }
-    else {
-      console.log('input length shorter than randomSeq length');
+      // console.log('input length equals randomSeq length');
+      if (inputSeq.join('') === randomSeq.join('')) {
+        clearInterval(checkInputTimer);
+        // console.log('Correct input');
+        level++;
+        // generateSeq();
+        setTimeout(generateSeq, 1500);
+      } else {
+        clearInterval(checkInputTimer);
+        // console.log('Correct length, wrong input');
+        endGame();
+      }
+    } else {
+      // console.log('input length shorter than randomSeq length');
     }
   }
   /*---Game logic---*/
@@ -182,7 +178,6 @@ $(document).ready(() => {
 
   const populateStorage = () => {
     localStorage.setItem('highScore', level);
-    // setHighScore();
   }
 
 
@@ -199,7 +194,7 @@ $(document).ready(() => {
     }
   }
 
-  
+
   // for use to update/get/set highscore on page load/end of game
   const setScoreOnLoadAndEndGame = () => {
     if (storageAvailable('localStorage')) {
@@ -217,7 +212,7 @@ $(document).ready(() => {
   /*---Tile clicks functions---*/
   const clickOne = () => {
     inputSeq.push(1);
-    console.log(inputSeq);
+    // console.log(inputSeq);
     $('#1').toggleClass('litblue jello');
     setTimeout(() => {
       $('#1').removeClass('litblue jello');
@@ -226,7 +221,7 @@ $(document).ready(() => {
 
   const clickTwo = () => {
     inputSeq.push(2);
-    console.log(inputSeq);
+    // console.log(inputSeq);
     $('#2').toggleClass('litred jello');
     setTimeout(() => {
       $('#2').removeClass('litred jello');
@@ -235,7 +230,7 @@ $(document).ready(() => {
 
   const clickThree = () => {
     inputSeq.push(3);
-    console.log(inputSeq);
+    // console.log(inputSeq);
     $('#3').toggleClass('litgreen jello');
     setTimeout(() => {
       $('#3').removeClass('litgreen jello');
@@ -244,7 +239,7 @@ $(document).ready(() => {
 
   const clickFour = () => {
     inputSeq.push(4);
-    console.log(inputSeq);
+    // console.log(inputSeq);
     $('#4').toggleClass('lityellow jello');
     setTimeout(() => {
       $('#4').removeClass('lityellow jello');
@@ -253,7 +248,7 @@ $(document).ready(() => {
 
   const clickFive = () => {
     inputSeq.push(5);
-    console.log(inputSeq);
+    // console.log(inputSeq);
     $('#5').toggleClass('litorange jello');
     setTimeout(() => {
       $('#5').removeClass('litorange jello');
@@ -262,7 +257,7 @@ $(document).ready(() => {
 
   const clickSix = () => {
     inputSeq.push(6);
-    console.log(inputSeq);
+    // console.log(inputSeq);
     $('#6').toggleClass('litblue jello');
     setTimeout(() => {
       $('#6').removeClass('litblue jello');
@@ -271,7 +266,7 @@ $(document).ready(() => {
 
   const clickSeven = () => {
     inputSeq.push(7);
-    console.log(inputSeq);
+    // console.log(inputSeq);
     $('#7').toggleClass('litred jello');
     setTimeout(() => {
       $('#7').removeClass('litred jello');
@@ -280,7 +275,7 @@ $(document).ready(() => {
 
   const clickEight = () => {
     inputSeq.push(8);
-    console.log(inputSeq);
+    // console.log(inputSeq);
     $('#8').toggleClass('litgreen jello');
     setTimeout(() => {
       $('#8').removeClass('litgreen jello');
@@ -289,14 +284,14 @@ $(document).ready(() => {
 
   const clickNine = () => {
     inputSeq.push(9);
-    console.log(inputSeq);
+    // console.log(inputSeq);
     $('#9').toggleClass('lityellow jello');
     setTimeout(() => {
       $('#9').removeClass('lityellow jello');
     }, lightUpDuration);
   }
   /*---Tile click functions---*/
-  
+
   /*---Click listeners---*/
   $('#start').on('click', startGame);
   $('#reset').on('click', resetGame);
@@ -307,7 +302,7 @@ $(document).ready(() => {
   $('#5').on('click', clickFive);
   $('#6').on('click', clickSix);
   $('#7').on('click', clickSeven);
-  $('#8').on('click', clickEight);  
+  $('#8').on('click', clickEight);
   $('#9').on('click', clickNine);
   /*---Click listeners---*/
 
